@@ -1,21 +1,707 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevVault Sandbox</title>
-    <link rel="stylesheet" href="Style.css">
+    <title>AbdulSomod Habeebulahi Tenifayo | Senior Fullstack Developer</title>
+    <meta name="description" content="Portfolio of AbdulSomod Habeebulahi Tenifayo, a professional Fullstack Developer specializing in building scalable web applications, robust APIs, and cloud-native solutions.">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            900: '#14532d',
+                        },
+                        dark: {
+                            900: '#030712',
+                            800: '#1f2937',
+                            700: '#374151',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .glassmorphism {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #34d399 0%, #059669 50%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .text-gradient-blue {
+            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030712;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2937;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #10b981;
+        }
+    </style>
 </head>
-<body>
-    <div class="card">
-        <div class="logo-container">
-            <div class="glow"></div>
-            <h1>DevVault</h1>
-        </div>
-        <p class="subtitle">Offline Code. Create Anywhere.</p>
-        <button id="actionBtn" class="pulse-btn">Click Me</button>
-        <p id="output" class="hidden-text"></p>
+<body class="bg-slate-950 text-slate-100 overflow-x-hidden selection:bg-emerald-500 selection:text-slate-950">
+
+    <!-- Background Decorative Blobs -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[800px] pointer-events-none overflow-hidden z-0">
+        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-emerald-500/10 blur-[120px] animate-blob"></div>
+        <div class="absolute top-[20%] right-[-10%] w-[600px] h-[600px] rounded-full bg-blue-500/10 blur-[150px] animate-blob animation-delay-2000"></div>
+        <div class="absolute top-[60%] left-[10%] w-[400px] h-[400px] rounded-full bg-purple-500/5 blur-[100px] animate-blob animation-delay-4000"></div>
     </div>
-    <script src="script.js"></script>
+
+    <!-- Header / Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300" id="main-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20 glassmorphism mt-4 rounded-2xl px-6 shadow-2xl">
+                <div class="flex-shrink-0">
+                    <a href="#hero" class="text-xl font-extrabold tracking-wider text-white flex items-center gap-2">
+                        <span class="bg-gradient-to-r from-emerald-400 to-teal-500 text-transparent bg-clip-text">&lt;</span>
+                        <span>AS.TENIFAYO</span>
+                        <span class="bg-gradient-to-r from-teal-500 to-emerald-400 text-transparent bg-clip-text">/&gt;</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-slate-300 hover:text-emerald-400 transition-colors duration-200 font-medium text-sm">About</a>
+                    <a href="#skills" class="text-slate-300 hover:text-emerald-400 transition-colors duration-200 font-medium text-sm">Skills</a>
+                    <a href="#projects" class="text-slate-300 hover:text-emerald-400 transition-colors duration-200 font-medium text-sm">Projects</a>
+                    <a href="#services" class="text-slate-300 hover:text-emerald-400 transition-colors duration-200 font-medium text-sm">Services</a>
+                    <a href="#contact" class="text-slate-300 hover:text-emerald-400 transition-colors duration-200 font-medium text-sm">Contact</a>
+                </nav>
+
+                <div class="hidden md:flex items-center">
+                    <a href="#contact" class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xs font-bold text-white rounded-xl group bg-gradient-to-br from-emerald-400 to-teal-600 group-hover:from-emerald-400 group-hover:to-teal-600 hover:text-white focus:ring-4 focus:outline-none focus:ring-emerald-800 transition-all duration-300">
+                        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-slate-950 rounded-xl group-hover:bg-opacity-0">
+                            Hire Me
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white focus:outline-none p-2 rounded-lg hover:bg-slate-900 transition-colors">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-28 left-4 right-4 glassmorphism rounded-2xl p-6 shadow-2xl flex flex-col space-y-4 z-50 border border-slate-800">
+            <a href="#about" class="mobile-link text-slate-300 hover:text-emerald-400 py-2 text-base font-medium border-b border-slate-800/50">About</a>
+            <a href="#skills" class="mobile-link text-slate-300 hover:text-emerald-400 py-2 text-base font-medium border-b border-slate-800/50">Skills</a>
+            <a href="#projects" class="mobile-link text-slate-300 hover:text-emerald-400 py-2 text-base font-medium border-b border-slate-800/50">Projects</a>
+            <a href="#services" class="mobile-link text-slate-300 hover:text-emerald-400 py-2 text-base font-medium border-b border-slate-800/50">Services</a>
+            <a href="#contact" class="mobile-link text-slate-300 hover:text-emerald-400 py-2 text-base font-medium">Contact</a>
+            <a href="#contact" class="mobile-link w-full text-center bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold py-3 px-4 rounded-xl shadow-lg shadow-emerald-900/20 hover:opacity-90 transition-opacity">
+                Hire Me
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-32 pb-20 px-4 sm:px-6 lg:px-8 z-10">
+        <div class="max-w-7xl mx-auto text-center">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glassmorphism border border-emerald-500/30 text-emerald-400 text-xs sm:text-sm font-semibold mb-8 animate-pulse-slow">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                Available for Full-Time Opportunities & Freelance
+            </div>
+
+            <!-- Main Heading -->
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+                Hi, I'm <br class="sm:hidden">
+                <span class="text-gradient block mt-2 sm:inline">ABDULSOMOD HABEEBULAHI TENIFAYO</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-xl sm:text-2xl font-bold text-slate-300 mb-4 max-w-3xl mx-auto">
+                Senior Fullstack Developer & Cloud Architect
+            </p>
+            <p class="text-base sm:text-lg text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                I engineer high-performance, secure, and scalable web applications. Bridging the gap between elegant frontend interfaces and robust, distributed backend architectures.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                <a href="#projects" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold rounded-xl shadow-lg shadow-emerald-900/30 hover:shadow-emerald-900/50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2">
+                    View My Work <i class="fa-solid fa-arrow-right text-sm"></i>
+                </a>
+                <a href="#contact" class="w-full sm:w-auto px-8 py-4 glassmorphism text-slate-200 hover:text-white font-bold rounded-xl hover:bg-slate-900/80 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 border border-slate-800 hover:border-slate-700 flex items-center justify-center gap-2">
+                    Let's Talk <i class="fa-regular fa-envelope text-sm"></i>
+                </a>
+            </div>
+
+            <!-- Tech Stack Quick View -->
+            <div class="mt-20 pt-10 border-t border-slate-900/60 max-w-5xl mx-auto">
+                <p class="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-6">Trusted Tech Stack</p>
+                <div class="flex flex-wrap justify-center items-center gap-6 sm:gap-10 opacity-60 hover:opacity-80 transition-opacity duration-300">
+                    <div class="flex items-center gap-2 text-slate-300 text-sm font-medium"><i class="fa-brands fa-react text-xl text-cyan-400"></i> React / Next.js</div>
+                    <div class="flex items-center gap-2 text-slate-300 text-sm font-medium"><i class="fa-brands fa-node-js text-xl text-green-500"></i> Node.js</div>
+                    <div class="flex items-center gap-2 text-slate-300 text-sm font-medium"><i class="fa-brands fa-python text-xl text-yellow-500"></i> Python</div>
+                    <div class="flex items-center gap-2 text-slate-300 text-sm font-medium"><i class="fa-brands fa-docker text-xl text-blue-400"></i> Docker</div>
+                    <div class="flex items-center gap-2 text-slate-300 text-sm font-medium"><i class="fa-brands fa-aws text-xl text-orange-400"></i> AWS</div>
+                    <div class="flex items-center gap-2 text-slate-300 text-sm font-medium"><i class="fa-solid fa-database text-xl text-emerald-400"></i> PostgreSQL</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 relative z-10 bg-slate-950/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Column: Image/Visual -->
+                <div class="lg:col-span-5 relative">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-emerald-500 to-teal-500 rounded-3xl rotate-3 scale-105 opacity-10 blur-lg"></div>
+                    <div class="relative rounded-3xl overflow-hidden border border-slate-800 bg-slate-900 p-8 flex flex-col justify-between aspect-square shadow-2xl">
+                        <div class="flex justify-between items-start">
+                            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-400">
+                                <i class="fa-solid fa-code text-xl"></i>
+                            </div>
+                            <span class="text-xs font-mono text-slate-500">EST. 2018</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-2">AbdulSomod H. Tenifayo</h3>
+                            <p class="text-emerald-400 font-medium text-sm mb-4">Fullstack Engineer & Architect</p>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                "I build systems that don't just work, but scale gracefully under pressure. Clean code, robust architecture, and exceptional user experience are my core principles."
+                            </p>
+                        </div>
+                        <div class="flex gap-4 pt-4 border-t border-slate-800/80">
+                            <div class="text-center flex-1">
+                                <span class="block text-2xl font-extrabold text-white">5+</span>
+                                <span class="text-[10px] uppercase tracking-wider text-slate-500 font-semibold">Years Exp</span>
+                            </div>
+                            <div class="text-center flex-1 border-x border-slate-800/80">
+                                <span class="block text-2xl font-extrabold text-white">40+</span>
+                                <span class="text-[10px] uppercase tracking-wider text-slate-500 font-semibold">Projects</span>
+                            </div>
+                            <div class="text-center flex-1">
+                                <span class="block text-2xl font-extrabold text-white">99%</span>
+                                <span class="text-[10px] uppercase tracking-wider text-slate-500 font-semibold">Success Rate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Text Content -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold uppercase tracking-wider">
+                        <i class="fa-solid fa-user text-[10px]"></i> About Me
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+                        Crafting High-Performance Digital Solutions
+                    </h2>
+                    <p class="text-slate-300 leading-relaxed">
+                        I am a passionate Fullstack Developer with a proven track record of designing, developing, and deploying robust web applications. My expertise spans across modern frontend frameworks, highly scalable backend microservices, and cloud infrastructure management.
+                    </p>
+                    <p class="text-slate-400 leading-relaxed">
+                        Whether it's building real-time collaborative platforms, optimizing database queries for millions of records, or setting up automated CI/CD pipelines, I approach every challenge with a focus on performance, security, and maintainability.
+                    </p>
+
+                    <!-- Key Highlights -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                        <div class="flex items-start gap-3">
+                            <div class="mt-1 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xs">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Frontend Excellence</h4>
+                                <p class="text-xs text-slate-400">Responsive, accessible, and interactive UI/UX.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="mt-1 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xs">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Scalable Backends</h4>
+                                <p class="text-xs text-slate-400">RESTful & GraphQL APIs with Node.js, Python, and Go.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="mt-1 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xs">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Cloud & DevOps</h4>
+                                <p class="text-xs text-slate-400">Docker, Kubernetes, AWS, and automated deployments.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="mt-1 w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xs">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Database Optimization</h4>
+                                <p class="text-xs text-slate-400">SQL/NoSQL design, caching, and query tuning.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 relative z-10 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
+                    <i class="fa-solid fa-screwdriver-wrench text-[10px]"></i> Expertise
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">My Technical Toolkit</h2>
+                <p class="text-slate-400">A comprehensive overview of the languages, frameworks, databases, and tools I leverage to build world-class applications.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Frontend Card -->
+                <div class="glassmorphism p-6 rounded-2xl border border-slate-800 hover:border-emerald-500/30 transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-laptop-code text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-4">Frontend Engineering</h3>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> React.js / Next.js</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> TypeScript</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> Tailwind CSS</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> Vue.js / Nuxt</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> Redux / Zustand</li>
+                    </ul>
+                </div>
+
+                <!-- Backend Card -->
+                <div class="glassmorphism p-6 rounded-2xl border border-slate-800 hover:border-emerald-500/30 transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-server text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-4">Backend Development</h3>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> Node.js / Express / NestJS</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> Python / Django / FastAPI</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> Go (Golang)</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> RESTful & GraphQL APIs</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> Microservices Architecture</li>
+                    </ul>
+                </div>
+
+                <!-- Databases & Caching Card -->
+                <div class="glassmorphism p-6 rounded-2xl border border-slate-800 hover:border-emerald-500/30 transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-database text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-4">Databases & Caching</h3>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> PostgreSQL / MySQL</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> MongoDB / DynamoDB</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> Redis (Caching & Queues)</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> Prisma / Mongoose / Sequelize</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> Elasticsearch</li>
+                    </ul>
+                </div>
+
+                <!-- DevOps & Tools Card -->
+                <div class="glassmorphism p-6 rounded-2xl border border-slate-800 hover:border-emerald-500/30 transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-cloud-arrow-up text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-4">DevOps & Cloud</h3>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> AWS (S3, EC2, RDS, Lambda)</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> Docker & Kubernetes</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> CI/CD (GitHub Actions, GitLab)</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> Linux & Nginx</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i> Git & Version Control</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 relative z-10 bg-slate-950/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
+                    <i class="fa-solid fa-folder-open text-[10px]"></i> Portfolio
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">Featured Projects</h2>
+                <p class="text-slate-400">A curated selection of my recent work, showcasing fullstack capabilities, clean code, and complex problem-solving.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Project 1 -->
+                <div class="glassmorphism rounded-2xl overflow-hidden border border-slate-800 hover:border-slate-700 transition-all duration-300 flex flex-col h-full group">
+                    <div class="relative aspect-video bg-slate-900 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-teal-900/40 flex items-center justify-center">
+                            <i class="fa-solid fa-chart-line text-5xl text-emerald-400 opacity-40 group-hover:scale-110 transition-transform duration-300"></i>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-slate-950/80 backdrop-blur-md text-emerald-400 text-xs font-bold px-3 py-1 rounded-full border border-emerald-500/20">
+                            SaaS Platform
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">Apex Analytics Dashboard</h3>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow">
+                            A real-time business intelligence platform featuring dynamic data visualization, custom report generation, and multi-tenant user management.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-[11px] font-semibold bg-slate-900 text-slate-300 px-2.5 py-1 rounded-md border border-slate-800">Next.js</span>
+                            <span class="text-[11px] font-semibold bg-slate-900 text-slate-300 px-2.5 py-1 rounded-md border border-slate-800">NestJS</span>
+                            <span class="text-[11px] font-semibold bg-slate-900 text-slate-300 px-2.5 py-1 rounded-md border border-slate-800">PostgreSQL</span>
+                            <span class="text-[11px] font-semibold bg-slate-900 text-slate-300 px-2.5 py-1 rounded-md border border-slate-800">Tailwind</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-800/60">
+                            <a href="#" class="text-xs font-bold text-slate-400 hover:text-white flex items-center gap-1.5 transition-colors">
+                                <i class="fa-brands fa-github text-sm"></i> Source Code
+                            </a>
+                            <a href="#" class="text-xs font-bold text-emerald-400 hover:text-emerald-300 flex items-center gap-1.5 transition-colors">
+                                Live Demo <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glassmorphism rounded-2xl overflow-hidden border border-slate-800 hover:border-slate-700 transition-all duration-300 flex flex-col h-full group">
+                    <div class="relative aspect-video bg-slate-900 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-indigo-900/40 flex items-center justify-center">
+                            <i class="fa-solid fa-comments text-5xl text-blue-400 opacity-40 group-hover:scale-110 transition-transform duration-300"></i>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-slate-950/80 backdrop-blur-md text-blue-400 text-xs font-bold px-3 py-1 rounded-full border border-blue-500/20">
+                            Real-time App
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">CollabSpace Workspace</h3>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow">
+                            A real-time collaborative workspace platform with instant messaging, document co-editing, and integrated video conferencing capabilities.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-[11px] font-semibold bg-slate-900 text-slate-300 px-2.5 py-1 rounded-md border border-slate-800">React</span>
+                            <span class="text-[11px] font-semibold bg-slate-900 text-slate-300 px-2.5 py-1 rounded-md border border-slate-800">Socket.io</span>
+                            <span class="text-[11px] font-semibold bg-slate-900 text-slate-300 px-2.5 py-1 rounded-md border border-slate-800">Redis</span>
+                            <span class="text-[11px] font-semibold bg-slate-900 text-slate-300 px-2.5 py-1 rounded-md border border-slate-800">MongoDB</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-800/60">
+                            <a href="#" class="text-xs font-bold text-slate-400 hover:text-white flex items-center gap-1.5 transition-colors">
+                                <i class="fa-brands fa-github text-sm"></i> Source Code
+                            </a>
+                            <a href="#" class="text-xs font-bold text-blue-400 hover:text-blue-300 flex items-center gap-1.5 transition-colors">
+                                Live Demo <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="glassmorphism rounded-2xl overflow-hidden border border-slate-800 hover:border-slate-700 transition-all duration-300 flex flex-col h-full group">
+                    <div class="relative aspect-video bg-slate-900 overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-900/40 flex items-center justify-center">
+                            <i class="fa-solid fa-cart-shopping text-5xl text-purple-400 opacity-40 group-hover:scale-110 transition-transform duration-300"></i>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-slate-950/80 backdrop-blur-md text-purple-400 text-xs font-bold px-3 py-1 rounded-full border border-purple-500/20">
+                            E-Commerce API
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">NovaStore Microservices</h3>
+                        <p class="text-slate-400 text-sm mb-6 flex-grow">
+                            A highly scalable e-commerce backend built with microservices architecture, featuring automated inventory tracking and Stripe payment gateway.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-[11px] font-semibold bg-slate-900 text-slate-300 px-2.5 py-1 rounded-md border border-slate-800">Go</span>
+                            <span class="text-[11px] font-semibold bg-slate-900 text-slate-300 px-2.5 py-1 rounded-md border border-slate-800">Docker</span>
+                            <span class="text-[11px] font-semibold bg-slate-900 text-slate-300 px-2.5 py-1 rounded-md border border-slate-800">gRPC</span>
+                            <span class="text-[11px] font-semibold bg-slate-900 text-slate-300 px-2.5 py-1 rounded-md border border-slate-800">Kubernetes</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-slate-800/60">
+                            <a href="#" class="text-xs font-bold text-slate-400 hover:text-white flex items-center gap-1.5 transition-colors">
+                                <i class="fa-brands fa-github text-sm"></i> Source Code
+                            </a>
+                            <a href="#" class="text-xs font-bold text-purple-400 hover:text-purple-300 flex items-center gap-1.5 transition-colors">
+                                Live Demo <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 relative z-10 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
+                    <i class="fa-solid fa-handshake text-[10px]"></i> Services
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">What I Can Do For You</h2>
+                <p class="text-slate-400">I offer comprehensive development services tailored to help businesses scale and succeed in the digital landscape.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Service 1 -->
+                <div class="glassmorphism p-8 rounded-2xl border border-slate-800 hover:border-slate-700 transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-globe text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Fullstack Web Development</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        End-to-end development of modern, responsive, and highly interactive web applications tailored to your specific business requirements.
+                    </p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glassmorphism p-8 rounded-2xl border border-slate-800 hover:border-slate-700 transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-gears text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">API Design & Integration</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Designing secure, robust, and well-documented RESTful and GraphQL APIs that seamlessly integrate with third-party services and mobile apps.
+                    </p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glassmorphism p-8 rounded-2xl border border-slate-800 hover:border-slate-700 transition-all duration-300 group">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-cloud text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Cloud Architecture & DevOps</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Setting up scalable cloud infrastructure on AWS, containerizing applications with Docker, and implementing automated CI/CD pipelines.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 relative z-10 bg-slate-950/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Left Column: Contact Info -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
+                            <i class="fa-solid fa-envelope text-[10px]"></i> Contact
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-4">Let's Build Something Great Together</h2>
+                        <p class="text-slate-400 leading-relaxed">
+                            Have an exciting project in mind? Or looking to add a skilled developer to your team? Drop me a message, and let's discuss how I can help you succeed.
+                        </p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-emerald-400">
+                                <i class="fa-solid fa-envelope text-lg"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Email Me</p>
+                                <a href="mailto:abdulsomodtenifayo@gmail.com" class="text-sm sm:text-base text-white hover:text-emerald-400 transition-colors font-medium">abdulsomodtenifayo@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-emerald-400">
+                                <i class="fa-solid fa-location-dot text-lg"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Location</p>
+                                <p class="text-sm sm:text-base text-white font-medium">Lagos, Nigeria (Available for Remote / Relocation)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="pt-6 border-t border-slate-900">
+                        <p class="text-xs text-slate-500 uppercase tracking-wider font-semibold mb-4">Follow My Journey</p>
+                        <div class="flex gap-4">
+                            <a href="#" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-slate-700 transition-all"><i class="fa-brands fa-github text-lg"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-slate-700 transition-all"><i class="fa-brands fa-linkedin-in text-lg"></i></a>
+                            <a href="#" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:border-slate-700 transition-all"><i class="fa-brands fa-twitter text-lg"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Contact Form -->
+                <div class="lg:col-span-7">
+                    <div class="glassmorphism p-8 rounded-3xl border border-slate-800 shadow-2xl">
+                        <form id="contact-form" class="space-y-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Your Name</label>
+                                    <input type="text" id="name" required class="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 transition-colors text-sm" placeholder="John Doe">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Email Address</label>
+                                    <input type="email" id="email" required class="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 transition-colors text-sm" placeholder="john@example.com">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="subject" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Subject</label>
+                                <input type="text" id="subject" required class="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 transition-colors text-sm" placeholder="Project Inquiry / Job Opportunity">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Message</label>
+                                <textarea id="message" rows="5" required class="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500 transition-colors text-sm resize-none" placeholder="Tell me about your project..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-4 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold rounded-xl shadow-lg shadow-emerald-900/20 hover:shadow-emerald-900/40 hover:scale-[1.01] active:scale-[0.99] transition-all duration-200 flex items-center justify-center gap-2">
+                                Send Message <i class="fa-regular fa-paper-plane text-sm"></i>
+                            </button>
+                        </form>
+                        <!-- Success Message -->
+                        <div id="form-success" class="hidden mt-6 p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-emerald-400 text-sm text-center font-medium">
+                            <i class="fa-solid fa-circle-check mr-2"></i> Thank you! Your message has been sent successfully.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-900 py-12 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex-shrink-0">
+                    <a href="#hero" class="text-lg font-extrabold tracking-wider text-white flex items-center gap-2">
+                        <span class="bg-gradient-to-r from-emerald-400 to-teal-500 text-transparent bg-clip-text">&lt;</span>
+                        <span>AS.TENIFAYO</span>
+                        <span class="bg-gradient-to-r from-teal-500 to-emerald-400 text-transparent bg-clip-text">/&gt;</span>
+                    </a>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-500 text-center md:text-left">
+                    &copy; <span id="current-year"></span> ABDULSOMOD HABEEBULAHI TENIFAYO. All rights reserved.
+                </p>
+                <div class="flex gap-6">
+                    <a href="#about" class="text-xs text-slate-400 hover:text-white transition-colors">About</a>
+                    <a href="#skills" class="text-xs text-slate-400 hover:text-white transition-colors">Skills</a>
+                    <a href="#projects" class="text-xs text-slate-400 hover:text-white transition-colors">Projects</a>
+                    <a href="#contact" class="text-xs text-slate-400 hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.className = 'fa-solid fa-bars text-xl';
+            } else {
+                icon.className = 'fa-solid fa-xmark text-xl';
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.querySelector('i').className = 'fa-solid fa-bars text-xl';
+            });
+        });
+
+        // Header Scroll Effect
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('py-2');
+                header.classList.remove('py-0');
+            } else {
+                header.classList.remove('py-2');
+                header.classList.add('py-0');
+            }
+        });
+
+        // Dynamic Copyright Year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Contact Form Submission Handler
+        const contactForm = document.getElementById('contact-form');
+        const formSuccess = document.getElementById('form-success');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Simulate form submission
+            contactForm.classList.add('opacity-50', 'pointer-events-none');
+            setTimeout(() => {
+                contactForm.reset();
+                contactForm.classList.remove('opacity-50', 'pointer-events-none');
+                formSuccess.classList.remove('hidden');
+                setTimeout(() => {
+                    formSuccess.classList.add('hidden');
+                }, 5000);
+            }, 1000);
+        });
+    </script>
 </body>
-</html>
+    </html>
